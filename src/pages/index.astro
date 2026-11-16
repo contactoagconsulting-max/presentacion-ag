@@ -456,47 +456,33 @@ const practices = [
           });
         });
 
-        const snapMedia = gsap.matchMedia();
-        snapMedia.add('(min-width: 760px)', () => {
-          const narrativePanels = gsap.utils.toArray(
-            '.opening, .identity, .what, .approach, .purpose, .robotics, .closing',
-          );
-          const practices = document.querySelector('.practices');
-          const proximity = 220;
+        // Slide navigation itself is CSS scroll-snap (see global.css). This keeps
+        // the snap honest: a slide taller than the viewport stays reachable instead
+        // of being skipped by mandatory snapping, so nothing gets cut off.
+        const snapMedia = window.matchMedia('(min-width: 760px)');
+        const syncSnapability = () => {
+          const sections = Array.from(document.querySelectorAll('main > section'));
 
-          ScrollTrigger.create({
-            trigger: document.body,
-            start: 'top top',
-            end: 'max',
-            snap: {
-              snapTo: (progress, self) => {
-                const maxScroll = ScrollTrigger.maxScroll(window);
-                const projectedScroll = progress * maxScroll;
-                const practicesStart = practices.getBoundingClientRect().top + window.scrollY;
-                const practicesEnd = practicesStart + practices.offsetHeight;
+          if (!snapMedia.matches) {
+            sections.forEach((section) => section.removeAttribute('data-tall'));
+            document.documentElement.removeAttribute('data-snap');
+            return;
+          }
 
-                if (projectedScroll >= practicesStart && projectedScroll <= practicesEnd) {
-                  return progress;
-                }
-
-                const nearestPanelStart = narrativePanels.reduce((nearest, panel) => {
-                  const panelStart = panel.getBoundingClientRect().top + window.scrollY;
-                  return Math.abs(panelStart - projectedScroll) < Math.abs(nearest - projectedScroll)
-                    ? panelStart
-                    : nearest;
-                }, Number.POSITIVE_INFINITY);
-
-                return Math.abs(nearestPanelStart - projectedScroll) <= proximity
-                  ? nearestPanelStart / maxScroll
-                  : progress;
-              },
-              delay: 0.12,
-              duration: { min: 0.15, max: 0.35 },
-              ease: 'power1.out',
-              inertia: false,
-            },
+          let tallest = 0;
+          sections.forEach((section) => {
+            const isTall = section.offsetHeight > window.innerHeight + 1;
+            section.toggleAttribute('data-tall', isTall);
+            if (isTall) tallest += 1;
           });
-        });
+
+          document.documentElement.dataset.snap = tallest > 0 ? 'proximity' : 'mandatory';
+        };
+
+        syncSnapability();
+        window.addEventListener('resize', syncSnapability);
+        window.addEventListener('load', syncSnapability);
+        document.fonts?.ready.then(syncSnapability);
       }
     </script>
   </body>
