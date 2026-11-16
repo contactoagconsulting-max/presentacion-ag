@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "chosen": "10-contenido-arriba.html",
+  "handoffs": {
+    "10-contenido-arriba.html": {
+      "status": "in_progress",
+      "queued": false,
+      "sentAt": "2026-11-16T13:38:53.140Z",
+      "startedAt": "2026-11-16T13:39:16.827Z",
+      "implementedAt": null,
+      "note": "Implementando J: título en una línea, bloque al tope, grilla estirada."
+    }
+  }
+}

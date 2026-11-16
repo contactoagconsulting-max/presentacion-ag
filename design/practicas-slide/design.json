@@ -1,0 +1,69 @@
+{
+  "title": "Slide de prácticas (Prácticas de Consultoría)",
+  "brief": "Tres direcciones para cerrar el vacío de la franja superior en la slide 05/08. El contenido (seis prácticas con sus ítems, los iconos PNG y el índice 05/08) se mantiene idéntico; solo cambia cómo se ocupa el tercio superior.",
+  "artboards": [
+    {
+      "file": "01-encabezado-dos-columnas.html",
+      "title": "A — Encabezado en dos columnas",
+      "tradeoff": "El h2 deja de ocupar solo la izquierda: una bajada de dos líneas ocupa la derecha y equilibra la franja. Apoya el deck con línea argumental, pero exige redactar esa bajada y aprobarla como copy del cliente.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "02-franja-editorial.html",
+      "title": "B — Franja editorial con número fantasma",
+      "tradeoff": "Cierra el borde superior con una regla a todo el ancho, un 04 en gris de línea y un pie de tres líneas; el contenido arranca más arriba y las tarjetas ganan aire. No inventa copy nuevo, pero el número fantasma repite el 04 del eyebrow y el 05/08 del índice, que ya conviven.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "03-cabecera-foto.html",
+      "title": "C — Cabecera con fotografía",
+      "tradeoff": "Una banda superior a sangre con la foto de reunión absorbe el vacío de un golpe y conecta con la slide de enfoque. Contra: parte la slide en oscuro/claro, cambia el registro de una slide que era la más limpia del deck y obliga a comprimir las tarjetas para que las seis entren.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "04-tabla-editorial.html",
+      "title": "D — Tabla editorial a sangre",
+      "tradeoff": "Sin tarjetas: una retícula de hairlines de borde a borde con las seis prácticas como celdas de tabla. Es la que más cubre la hoja y la más seria; contra: pierde la calidez de la tarjeta blanca y las listas cortas dejan celdas con aire abajo.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "05-filas-horizontales.html",
+      "title": "E — Filas horizontales",
+      "tradeoff": "Cada práctica es una fila a todo el ancho con el título a la izquierda y los ítems en dos columnas: seis filas repartidas por el alto completo. Cubre la hoja mejor que todas y se lee como comparación; contra: deja de haber bloques reconocibles y los ítems se reparten en dos columnas de forma pareja, no semántica.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "06-jerarquia-ancha.html",
+      "title": "F — Jerarquía ancha",
+      "tradeoff": "Grilla de cuatro columnas donde las dos prácticas con más ítems (Eficiencia y Transformación Digital) ocupan el doble de ancho y todas las tarjetas se estiran a lo alto. Da jerarquía y cubre la hoja; contra: las tarjetas con tres ítems quedan medio vacías por dentro.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "07-titulo-sangre.html",
+      "title": "G — Título a sangre",
+      "tradeoff": "El título ocupa todo el ancho en una sola línea, con una regla de 2px en ink debajo: no queda papel a la derecha por construcción. Contra: obliga a bajar el cuerpo del h2 (5.4rem máximo) para que entre en una línea y las tarjetas se estiran a lo alto, con aire interno abajo.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "09-titulo-con-indice.html",
+      "title": "I — Título con índice de prácticas",
+      "tradeoff": "A la derecha del título va un índice numerado 01-06 de las seis prácticas, con hairlines: llena el hueco con contenido y anticipa la estructura. Contra: repite los seis títulos que ya aparecen en las tarjetas y obliga a comprimir el texto de las tarjetas para que las dos filas entren.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "10-contenido-arriba.html",
+      "title": "J — Contenido arriba, título en una línea",
+      "tradeoff": "Título en una sola línea (hasta 4.4rem) y el bloque al tope: la reserva superior baja a 2.75rem, así que el eyebrow arranca en 51px en vez de 162. La grilla se estira para llegar al pie (852px), de modo que no queda papel muerto ni arriba ni abajo. Contra: las tarjetas de tres ítems quedan con aire interno y el texto del título compite en ancho con el logo si la ventana se angosta.",
+      "width": 1440,
+      "height": 900
+    }
+  ]
+}

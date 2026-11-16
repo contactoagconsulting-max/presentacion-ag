@@ -621,6 +621,102 @@ h3 {
   font-size: clamp(2.4rem, 6vw, 4.7rem);
 }
 
+/* The fixed logo occupies the top-right corner: whatever the viewport, no slide
+   may start its text inside that band. The sheet slides set their own
+   padding-block, so they are named explicitly. */
+@media (min-width: 760px) {
+  .section-shell,
+  :is(.identity, .what, .purpose, .closing).section-shell {
+    padding-top: max(7.75rem, 6svh);
+  }
+}
+
+@media (min-width: 760px) and (max-height: 880px) {
+  /* Shrinking the mark buys back the height the clearance costs. */
+  .header-logo { width: 7.5rem; }
+  .section-shell,
+  :is(.identity, .what, .purpose, .closing).section-shell {
+    padding-top: max(6.5rem, 5.5svh);
+  }
+}
+
+@media (min-width: 760px) and (max-height: 700px) {
+  .practices-heading h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+  .practice-card { padding: 0.7rem 0.85rem; }
+  .practice-card h3 { font-size: 0.95rem; }
+  .practice-card ul { font-size: 0.68rem; line-height: 1.3; }
+}
+
+/* Above 760px the practices slide fills the screen: the title runs on one line
+   and the grid stretches to the footer, so no dead paper is left at either end. */
+@media (min-width: 760px) {
+  .practices {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    padding-bottom: max(2.5rem, 4svh);
+  }
+
+  .practices-frame {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+
+  .practices-heading {
+    margin-bottom: 1.5rem;
+  }
+
+  .practices-heading h2 {
+    max-width: none;
+    white-space: nowrap;
+    font-size: clamp(1.9rem, 4.4vw, 4.4rem);
+  }
+
+  .practice-grid {
+    flex: 1;
+    grid-auto-rows: minmax(0, 1fr);
+  }
+
+  /* Stretched rows need a tighter card so their content still fits the row. */
+  .practice-card {
+    padding: 0.95rem 1.15rem;
+  }
+
+  .practice-card-heading {
+    margin-bottom: 0.6rem;
+  }
+
+  .practice-card-heading img {
+    width: 2.4rem;
+    height: 2.4rem;
+    flex-basis: 2.4rem;
+  }
+
+  .practice-card ul {
+    gap: 0.2rem;
+    font-size: 0.76rem;
+    line-height: 1.38;
+  }
+
+  .practices-heading {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Two columns means three rows: the tightest case of this slide. */
+@media (min-width: 760px) and (max-width: 1099px) {
+  .practice-card {
+    padding: 0.9rem 1.05rem;
+  }
+
+  .practice-card ul {
+    gap: 0.25rem;
+    font-size: 0.76rem;
+    line-height: 1.4;
+  }
+}
+
 .section-intro {
   max-width: 34ch;
   margin: 1rem 0 0;
@@ -1140,28 +1236,7 @@ h3 {
   main > section[data-tall] { scroll-snap-align: none; }
 }
 
-/* The fixed logo occupies the top-right corner: whatever the viewport, no slide
-   may start its text inside that band. The sheet slides set their own
-   padding-block, so they are named explicitly. */
-@media (min-width: 760px) {
-  .section-shell,
-  :is(.identity, .what, .purpose, .closing).section-shell {
-    padding-top: max(7.75rem, 6svh);
-  }
-}
-
+/* Short screens: the stretched practices slide needs the bottom edge back. */
 @media (min-width: 760px) and (max-height: 880px) {
-  /* Shrinking the mark buys back the height the clearance costs. */
-  .header-logo { width: 7.5rem; }
-  .section-shell,
-  :is(.identity, .what, .purpose, .closing).section-shell {
-    padding-top: max(6.5rem, 5.5svh);
-  }
-}
-
-@media (min-width: 760px) and (max-height: 700px) {
-  .practices-heading h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
-  .practice-card { padding: 0.7rem 0.85rem; }
-  .practice-card h3 { font-size: 0.95rem; }
-  .practice-card ul { font-size: 0.68rem; line-height: 1.3; }
+  .practices.section-shell { padding-bottom: 1.25rem; }
 }
