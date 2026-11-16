@@ -1,0 +1,34 @@
+{
+  "title": "Slide de enfoque (¿Cómo lo hacemos?)",
+  "brief": "Tres direcciones para que la slide 04/08 del deck de AG Consulting deje de ser una superficie negra con solo texto, respetando el sistema de diseño existente (src/styles/global.css). La copia, la grilla 0.8fr/1.2fr y el índice 04/08 se mantienen en las tres.",
+  "artboards": [
+    {
+      "file": "01-senal-sintonia.html",
+      "title": "A — Señal de sintonía",
+      "tradeoff": "Aporta la única lectura semántica (cinco señales que convergen en un punto) y reutiliza el idioma de iconos, sin assets nuevos ni duplicar las palabras del texto. Contra: es abstracto y depende de que el trazo se lea como sistema, no como adorno suelto.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "02-placa-render.html",
+      "title": "B — Placa clara con render",
+      "tradeoff": "Recupera el patrón que ya funciona en la slide de robótica y usa hero.png, un render de la misma familia que hoy no se está usando. Contra: obliga a bajar el cuerpo del texto de 4.2rem a 3.5rem para que la placa entre en el alto de la slide, y compite con el peso tipográfico del deck.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "03-registro-componentes.html",
+      "title": "C — Registro de componentes",
+      "tradeoff": "Da estructura y aire sin imagen: un registro 01–05 de marcas geométricas y un eje vertical de columna, todo con tokens existentes (hairline #45474a, accent #ff777b). Contra: sigue siendo textura, no contenido; no llena el vacío tanto como las otras dos y los números no dicen qué es cada uno.",
+      "width": 1440,
+      "height": 900
+    },
+    {
+      "file": "04-foto-fondo.html",
+      "title": "D — Fotografía de fondo",
+      "tradeoff": "La foto de reunión entra como textura a sangre completa y resuelve el negro sin agregar objetos: el scrim de ink hace todo el trabajo de contraste. Contra: mete fotografía de stock en un deck que hasta ahora era ilustración y tipografía, y obliga a decidir qué hacer con el recuadro blanco del logo sobre la imagen.",
+      "width": 1440,
+      "height": 900
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AG Consulting — sistema de diseño</title>
+<style>
+  :root {
+    --ink: #202124;
+    --muted: #66686b;
+    --paper: #f5f4f0;
+    --white: #fff;
+    --accent: #e5222b;
+    --line: #d9d8d3;
+    --stone: #cfccc5;
+    --sheet-back: #aaa79f;
+    --sheet-front: #e1ded7;
+    --accent-dark: #ff777b;
+    --hair-dark: #45474a;
+    --dim-dark: #c2c2c2;
+    --plate: #f5f1e9;
+    --card-line: #e3e1db;
+    --sans: 'Avenir Next', Avenir, Arial, Helvetica, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  .board { width: 1440px; padding: 4rem 4.5rem 5rem; }
+  .board-title { margin: 0; font-size: 2.5rem; font-weight: 600; letter-spacing: -0.06em; }
+  .board-sub { margin: 0.75rem 0 0; max-width: 60ch; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+  h3 {
+    margin: 3.5rem 0 1.25rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .rule { height: 1px; background: var(--line); border: 0; margin: 0 0 1.5rem; }
+
+  .swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; }
+  .swatch { border: 1px solid var(--line); background: var(--white); }
+  .swatch .chip { height: 5rem; }
+  .swatch .meta { padding: 0.65rem 0.75rem; font-size: 0.7rem; line-height: 1.45; }
+  .swatch .name { display: block; font-weight: 700; letter-spacing: 0.04em; }
+  .swatch .val { color: var(--muted); font-variant-numeric: tabular-nums; }
+  .swatch .src { display: block; color: var(--muted); opacity: 0.8; font-size: 0.62rem; }
+
+  .dark-sample { background: var(--ink); color: var(--white); padding: 2.5rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .dark-sample .eyebrow { margin: 0 0 1rem; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-dark); }
+  .dark-sample h2 { margin: 0; font-size: 3.4rem; font-weight: 600; letter-spacing: -0.075em; line-height: 1.03; max-width: 13ch; }
+  .dark-sample .copy { margin: 0; font-size: 1.9rem; font-weight: 500; letter-spacing: -0.04em; line-height: 1.25; max-width: 26ch; }
+  .dark-sample .idx { grid-column: 2; justify-self: end; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; color: var(--dim-dark); }
+
+  .scale { display: grid; gap: 1.5rem; }
+  .scale-row { display: grid; grid-template-columns: 13rem 1fr; gap: 2rem; align-items: baseline; border-top: 1px solid var(--line); padding-top: 1.25rem; }
+  .scale-row .tag { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); line-height: 1.6; }
+  .scale-row .demo { margin: 0; }
+  .t-eyebrow { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .t-h2 { font-size: 5.6rem; font-weight: 600; letter-spacing: -0.075em; line-height: 1.03; }
+  .t-display { font-size: 3.2rem; font-weight: 500; letter-spacing: -0.04em; line-height: 1.25; }
+  .t-item { font-size: 1.6rem; font-weight: 500; letter-spacing: -0.025em; line-height: 1.35; }
+  .t-index { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; color: var(--muted); }
+
+  .components { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; align-items: start; }
+  .card { background: var(--white); border: 1px solid var(--card-line); border-radius: 1rem; padding: 1.5rem; }
+  .card .card-title { display: flex; align-items: center; gap: 0.75rem; font-size: 1.05rem; font-weight: 600; letter-spacing: -0.02em; }
+  .card .icon { width: 3rem; height: 3rem; flex: 0 0 3rem; }
+  .card ul { margin: 1rem 0 0; padding-left: 1.1rem; font-size: 0.85rem; line-height: 1.55; color: var(--ink); }
+  .card li::marker { color: var(--accent); }
+
+  .plate { background: var(--plate); border: 1px solid rgb(229 34 43 / 55%); padding: 2rem; }
+  .plate .ph {
+    height: 11rem;
+    background:
+      radial-gradient(circle at 78% 62%, rgb(229 34 43 / 90%) 0 6%, transparent 6.4%),
+      linear-gradient(112deg, transparent 46%, rgb(229 34 43 / 85%) 46.4% 48%, transparent 48.4%),
+      linear-gradient(180deg, #d9d6cf, #efede7);
+  }
+  .plate p { margin: 1rem 0 0; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+
+  .sheets { display: flex; gap: 0; height: 9rem; }
+  .sheets .back { flex: 1; background: var(--sheet-back); border-radius: 0 0 72% 28% / 0 0 85% 35%; }
+  .sheets .front { flex: 1; background: var(--sheet-front); border-radius: 68% 32% 0 0 / 40% 90% 0 0; }
+  .note { margin: 0.75rem 0 0; font-size: 0.72rem; color: var(--muted); }
+
+  footer { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--line); font-size: 0.72rem; color: var(--muted); }
+</style>
+</head>
+<body>
+<main class="board">
+  <h1 class="board-title">AG Consulting — sistema de diseño</h1>
+  <p class="board-sub">Sincronizado desde <code>src/styles/global.css</code>, la única fuente de diseño del proyecto. Cada valor de esta placa está tomado del stylesheet; no hay tokens inventados.</p>
+
+  <h3>Color</h3>
+  <hr class="rule" />
+  <div class="swatches">
+    <div class="swatch"><div class="chip" style="background:#202124"></div><div class="meta"><span class="name">ink</span><span class="val">#202124</span><span class="src">global.css:16</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#66686b"></div><div class="meta"><span class="name">muted</span><span class="val">#66686b</span><span class="src">global.css:17</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#f5f4f0"></div><div class="meta"><span class="name">paper</span><span class="val">#f5f4f0</span><span class="src">global.css:18</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#e5222b"></div><div class="meta"><span class="name">accent</span><span class="val">#e5222b</span><span class="src">global.css:20</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#cfccc5"></div><div class="meta"><span class="name">stone</span><span class="val">#cfccc5</span><span class="src">global.css:279</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#f5f1e9"></div><div class="meta"><span class="name">plate</span><span class="val">#f5f1e9</span><span class="src">global.css:985</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#aaa79f"></div><div class="meta"><span class="name">sheet back</span><span class="val">#aaa79f</span><span class="src">global.css:342</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#e1ded7"></div><div class="meta"><span class="name">sheet front</span><span class="val">#e1ded7</span><span class="src">global.css:350</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#d9d8d3"></div><div class="meta"><span class="name">line</span><span class="val">#d9d8d3</span><span class="src">global.css:21</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#45474a"></div><div class="meta"><span class="name">hairline dark</span><span class="val">#45474a</span><span class="src">global.css:763</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#ff777b"></div><div class="meta"><span class="name">accent dark</span><span class="val">#ff777b</span><span class="src">global.css:562</span></div></div>
+    <div class="swatch"><div class="chip" style="background:#c2c2c2"></div><div class="meta"><span class="name">dim dark</span><span class="val">#c2c2c2</span><span class="src">global.css:569</span></div></div>
+  </div>
+
+  <h3>Tipografía</h3>
+  <hr class="rule" />
+  <div class="scale">
+    <div class="scale-row"><div class="tag">eyebrow<br />0.72rem / 700 / .16em</div><p class="demo t-eyebrow">03 — Enfoque</p></div>
+    <div class="scale-row"><div class="tag">h2<br />clamp(2.5rem, 7vw, 5.6rem)<br />600 / −0.075em / 13ch</div><p class="demo t-h2">¿Cómo lo hacemos?</p></div>
+    <div class="scale-row"><div class="tag">display copy<br />clamp(1.8rem, 5vw, 4.2rem)<br />500 / −0.04em / 26ch</div><p class="demo t-display">Sintonizando las metas, políticas, procesos.</p></div>
+    <div class="scale-row"><div class="tag">list item<br />clamp(1.25rem, 1.9vw, 1.6rem)</div><p class="demo t-item">Incrementar rentabilidad</p></div>
+    <div class="scale-row"><div class="tag">section index<br />0.65rem / 600 / .12em</div><p class="demo t-index">04 / 08</p></div>
+  </div>
+
+  <h3>Composición oscura vigente</h3>
+  <hr class="rule" />
+  <div class="dark-sample">
+    <div>
+      <p class="eyebrow">03 — Enfoque</p>
+      <h2>¿Cómo lo hacemos?</h2>
+    </div>
+    <p class="copy">Sintonizando las metas, políticas, procesos, la cultura organizacional y ventas con la experiencia del cliente</p>
+    <span class="idx">04 / 08</span>
+  </div>
+  <p class="note">Grid <code>0.8fr 1.2fr</code> con <code>gap: 5vw</code>, padding <code>clamp(5rem, 10vw, 9rem)</code> y frame de <code>70rem</code> (global.css:976, 115-124).</p>
+
+  <h3>Componentes</h3>
+  <hr class="rule" />
+  <div class="components">
+    <div class="card">
+      <div class="card-title">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#202124" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 3v18h18" />
+          <path stroke="#e5222b" d="m6 15 5-5 4 3 6-8m-5 0h5v5" />
+        </svg>
+        <span>Liderazgo</span>
+      </div>
+      <ul><li>Icono PNG a 3rem, contenedor a 1rem</li><li>Marcador de lista en accent</li></ul>
+    </div>
+    <div class="card">
+      <div class="card-title">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#202124" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="10" cy="10" r="6.5" />
+          <path stroke="#e5222b" d="m15 15 5.5 5.5" />
+        </svg>
+        <span>Icono de trazo</span>
+      </div>
+      <ul><li>24×24, stroke 1.7, un solo hijo en accent</li><li>aria-hidden y focusable=false</li></ul>
+    </div>
+    <div class="plate">
+      <div class="ph" role="img" aria-label="Marcador de placa clara con render"></div>
+      <p>Placa clara sobre slide oscura</p>
+    </div>
+  </div>
+
+  <h3>Pliegos</h3>
+  <hr class="rule" />
+  <div class="sheets">
+    <div class="back"></div>
+    <div class="front"></div>
+  </div>
+  <p class="note">Radios orgánicos en porcentaje (global.css:342-361, 374-379). Es el recurso que hoy solo usan las slides claras.</p>
+
+  <footer>Foco: <code>outline: 3px solid #e5222b; outline-offset: 5px</code> · sombra de pliegos: <code>0 12px 32px rgb(48 45 40 / 12%)</code> · movimiento GSAP con rama de reduced-motion solo en JS.</footer>
+</main>
+</body>
+</html>
