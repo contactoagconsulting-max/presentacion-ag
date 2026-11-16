@@ -3,12 +3,12 @@
   "chosen": "04-foto-fondo.html",
   "handoffs": {
     "04-foto-fondo.html": {
-      "status": "in_progress",
+      "status": "implemented",
       "queued": false,
       "sentAt": "2026-11-16T11:57:07.401Z",
       "startedAt": "2026-11-16T11:57:40.134Z",
-      "implementedAt": null,
-      "note": "Backdrop implementado en index.astro + global.css; commit 77c9020."
+      "implementedAt": "2026-11-16T11:59:41.656Z",
+      "note": "Implementado y desplegado: commit 52d8390, run 43862427843 verde. Foto + scrim en index.astro/global.css."
     }
   }
 }
